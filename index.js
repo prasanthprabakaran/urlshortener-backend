@@ -1,15 +1,23 @@
 import express from "express";
 import dotenv from 'dotenv';
 import bodyParser from "body-parser";
+import cors from 'cors';
+
 const app = express();
+
 import connectDB from './config/db.js';
+
 import UrlModel from './models/urlshortener.js'
+
 app.use(bodyParser.urlencoded({ extended: true}));
 app.set('view engine', "ejs");
 dotenv.config();
+
 connectDB();
 const PORT = process.env.PORT || 4000;
 
+app.use(cors());
+app.use(express.json());
 
 app.get('/',(req,res)=>{
     let allUrl = UrlModel.find((err, result)=>{
