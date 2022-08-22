@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from 'dotenv';
 import bodyParser from "body-parser";
 import cors from 'cors';
+// import { listRouter } from "./routes/home.js";
 
 const app = express();
 
@@ -26,6 +27,10 @@ app.get('/',(req,res)=>{
         })
     })
 })
+
+// Connecting Routes
+// app.use('/', listRouter);
+
 
 app.post('/create',(req,res)=>{
     let urlShort = new UrlModel({
